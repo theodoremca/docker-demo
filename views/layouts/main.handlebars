@@ -1,0 +1,99 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>ENTRY PROCESSSOR</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+  <link rel="stylesheet" href="public/css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="brand"><img height="50" src="public/css/logo.png" alt="" /></h1>
+    <div class="wrapper animated bounceInLeft">
+      <div class="company-info">
+        <h3>ENTRY PROCESSSOR</h3>
+  
+      </div>
+      <div class="contact">
+        <h3>ANSEL Technologies</h3>
+        
+        <div class="form" style="margin-bottom: 60px;">
+          <p>
+            <label >Entry </label>
+            <input id="entry" type="text" name="entry" />
+          </p>
+          <p>
+            <label>click to enqueue</label>
+            <button onclick="addEntry()" id="enqueue" type="button">Enqueue</button>
+          </p>
+
+        </div>
+        <p id="entriesCount"></p>
+        <hr />
+        <div class="form">
+
+          <p class="full">
+            <button onclick="processEntries()" id="processQueue" type="button">Process queue</button>
+          </p>
+
+          <p class="full">
+            <label>OutPut</label>
+            <textarea id="output" name="output" rows="5"></textarea>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function reverseString(str) {
+  return (str === '') ? '' : reverseString(str.substr(1)) + str.charAt(0);
+}
+    let enqueue = document.getElementById("enqueue"); let processQueue =
+      document.getElementById("processQueue"); let Entry =
+        document.getElementById("entry"); let output =
+          document.getElementById("output"); let entries = [];
+          document.getElementById("entriesCount").innerHTML = `${entries.length} Entries`;
+           function addEntry() {
+            if (Entry.value) {
+              const entry = {}; const data = Entry.value; entry.id =
+                entries.length + 1; entry.data = data; entries.push(entry);
+              console.log(entries); 
+              Entry.placeholder = ""
+            }else{
+              Entry.placeholder = "Enter a Value First"
+            }
+            document.getElementById("entriesCount").innerHTML = `${entries.length} Entries`;
+            Entry.value = "";
+          }
+
+    function processEntries() {
+      if (entries.length != 0) {
+        const processEntry = {}; 
+          entries.length + 1;
+        var outputData = '';
+        entries.forEach((e)=>{
+         outputData = outputData + reverseString(e.data)  +  `\n`;
+        });
+        console.log(outputData);
+output.value =outputData;
+output.placeholder = ""
+      } else{
+        output.placeholder = "Enqueue an entry First"
+      }
+    }
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
