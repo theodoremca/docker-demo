@@ -2,7 +2,6 @@
 
 Simple Node.js/Express app using Docker
 
-- Please add your own SMTP info for it to work
 
 
 ## Install Dependencies
